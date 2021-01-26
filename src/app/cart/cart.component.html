@@ -1,0 +1,37 @@
+<h1>Shopping Cart</h1>
+<div class="card">
+    <div class="card-header">
+        You have {{totalItems()}} items in your shopping cart
+        <button class="btn btn-info float-right" (click)="clearCart()">Clear Shopping Cart</button>
+      </div>
+      <div class="card-body">
+          <table class="table" *ngIf="selectedItem.length>0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedItem">
+                    <td><img src= "{{images[1].image}}" alt="image" style="height:40px; width: 40px" class="img-circle"></td>
+                    <td>{{item.title}}</td>
+                    <td>
+                        <div class="row">
+                            <button class="col-1 btn btn-info" (click)="removeFromCart(item)">-</button>
+                            <div class="col-3 text-center">{{item.quantity}} in cart</div>
+                            <button class="col-1 btn btn-info" (click)="addToCart(item)">+</button>
+                        </div>
+                    </td>
+                    <td>{{item.price * item.quantity | currency:'INR'}}</td>
+                </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="card-footer text-right">
+        {{totalPrice | currency:'INR'}}
+      </div>
+</div>
+<button routerLink="/checkout" *ngIf="selectedItem.length>0" class="btn btn-success float-right">Check Out Now</button>
