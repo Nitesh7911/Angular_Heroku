@@ -27,20 +27,20 @@ export class MainServiceService {
   constructor(private http: HttpClient) { }
 
   getImages() {
-    return this.http.get<Image[]>('http://localhost:8080/books/getAllImages');
+    return this.http.get<Image[]>('https://springboot-heroku-backend.herokuapp.com/books/getAllImages');
  
   }
 
   getBooks() {
-    return this.http.get<Book[]>('http://localhost:8080/books/getAllBooks');
+    return this.http.get<Book[]>('https://springboot-heroku-backend.herokuapp.com/books/getAllBooks');
  
   }
 
   getProducts=()=>{
-    return this.http.get<Book[]>('http://localhost:8080/books/getAllBooks');
+    return this.http.get<Book[]>('https://springboot-heroku-backend.herokuapp.com/books/getAllBooks');
   }
 
-
+  
   authenticationService = (username: String, password: String) =>{
     return this.http.get('./assets/products.json');
   }
